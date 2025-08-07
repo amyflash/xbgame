@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白蛇传奇</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .scene-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .choices {
+            margin-top: 20px;
+        }
+        .choice-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .choice-btn:hover {
+            background-color: #357ab8;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .ending {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d35400;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .game-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="stats">
+            <span>道行: <span id="power">100</span></span>
+            <span>情缘: <span id="love">50</span></span>
+            <span>业障: <span id="karma">0</span></span>
+        </div>
+        <img id="scene-image" class="scene-image" src="" alt="场景图片">
+        <div id="scene-text"></div>
+        <div id="choices" class="choices"></div>
+        <div id="ending" class="ending"></div>
+    </div>
+
+    <script>
+
+
+
+// 先声明gameData基础结构
+const gameData = {
+    currentScene: "start",
+    stats: {
+        power: 100,
+        love: 50,
+        karma: 0
+    },
+    scenes: null // 预置场景数据占位
+};
+
+// 异步加载场景数据
+fetch('scenes.json')
+    .then(response => {
+        if (!response.ok) throw new Error(`HTTP错误 ${response.status}`);
+        return response.json();
+    })
+    .then(data => {
+        gameData.scenes = data.scenes; // 正确赋值场景数据
+        console.log('场景数据加载完成', gameData);
+   // 初始化游戏
+        updateGame();
+    })
+    .catch(error => {
+        console.error('加载失败:', error);
+        gameData.scenes = {}; // 失败时初始化空场景
+    });
+
+
+        function updateGame() {
+            const scene = gameData.scenes[gameData.currentScene];
+            document.getElementById("scene-text").textContent = scene.text;
+            document.getElementById("scene-image").src = scene.image;
+            
+            const choicesDiv = document.getElementById("choices");
+            choicesDiv.innerHTML = "";
+            
+            if (scene.isEnding) {
+                document.getElementById("ending").textContent = "游戏结束";
+// 添加重新开始按钮
+        const restartBtn = document.createElement("button");
+        restartBtn.className = "choice-btn";
+        restartBtn.textContent = "重新开始";
+        restartBtn.onclick = () => location.reload();
+        document.getElementById("ending").appendChild(restartBtn);
+                return;
+            }
+            
+            scene.choices.forEach((choice, index) => {
+                const button = document.createElement("button");
+                button.className = "choice-btn";
+                button.textContent = choice.text;
+                button.onclick = () => makeChoice(index);
+                choicesDiv.appendChild(button);
+            });
+            
+            updateStats();
+        }
+
+        function makeChoice(choiceIndex) {
+            const scene = gameData.scenes[gameData.currentScene];
+            const choice = scene.choices[choiceIndex];
+            
+            // 更新属性
+            if (choice.effects) {
+                for (const stat in choice.effects) {
+                    gameData.stats[stat] += choice.effects[stat];
+                }
+            }
+            
+            // 转到下一个场景
+            gameData.currentScene = choice.nextScene;
+            updateGame();
+        }
+
+        function updateStats() {
+            document.getElementById("power").textContent = gameData.stats.power;
+            document.getElementById("love").textContent = gameData.stats.love;
+            document.getElementById("karma").textContent = gameData.stats.karma;
+        }
+
+     
+
+    </script>
+</body>
+</html>

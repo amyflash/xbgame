@@ -1,0 +1,304 @@
+
+{
+    "scenes": {
+        "start": {
+            "text": "你是一条修行百年的白蛇，已得人形，道号白素贞。这日你在西湖边游玩，忽然天降大雨...",
+            "image": "1.png",
+            "choices": [
+                {
+                    "text": "变回原形躲雨",
+                    "nextScene": "snake_form",
+                    "effects": { "power": -10 }
+                },
+                {
+                    "text": "用法力变出雨伞",
+                    "nextScene": "meet_xuxian",
+                    "effects": { "power": -5, "love": 10 }
+                }
+            ]
+        },
+        "snake_form": {
+            "text": "你变回小白蛇原形躲在树下，却被一个捕蛇人发现并捉住。",
+            "image": "2.png",
+            "choices": [
+                {
+                    "text": "用法力挣脱",
+                    "nextScene": "escape_hunter",
+                    "effects": { "power": -15, "karma": 5 }
+                },
+                {
+                    "text": "等待时机逃脱",
+                    "nextScene": "wait_escape",
+                    "effects": { "power": -5 }
+                }
+            ]
+        },
+        "escape_hunter": {
+            "text": "你挣脱了捕蛇人的绳索，逃到了一个山洞中继续修行，最后得道成仙。",
+            "image": "3.png",
+            "isEnding": true
+        },
+        "wait_escape": {
+            "text": "在等待的过程中，出现了一个小牧童，他用一个水蜜桃换捕蛇人放走了你",
+            "image": "4.png",
+            "choices": [
+                {
+                    "text": "你头也不回的走了",
+                    "nextScene": "ending_1",
+                    "effects": { "power": -15, "karma": 5 }
+                },
+                {
+                    "text": "你变回小女孩对小牧童表示感谢，并送他一个水蜜桃",
+                    "nextScene": "start_1700",
+                    "effects": { "power": -5 }
+                }
+            ]
+        },
+       
+        "meet_xuxian": {
+            "text": "你变出一把油纸伞遮雨，这时远远看到一个小牧童在吹笛子，你走过去，他看到你，就吹着笛子向你走来",
+            "image": "6.png",
+            "choices": [
+                {
+                    "text": "怕当印度蛇，你头也不回的走了",
+                    "nextScene": "ending_1",
+                    "effects": { "love": -5 }
+                },
+                {
+                    "text": "和小牧童一起撑伞并交谈甚欢",
+                    "nextScene": "start_1700",
+                    "effects": { "love": 20 }
+                }
+            ]
+        },
+        "start_1700": {
+            "text": "1700年后，你已经修炼成大人，法力无边，你决定下山去寻找许仙，报他前世情缘。你准备找个地方落脚，不小心闯入青蛇的府邸，小青想你做他的王妃",
+            "image": "9.png",
+            "choices": [
+                {
+                    "text": "答应做小青的王妃",
+                    "nextScene": "ending_3",
+                    "effects": { "love": 30}
+                },
+                {
+                    "text": "不答应做小青的王妃",
+                    "nextScene": "shouxiaoqing",
+                    "effects": { "love": 20}
+                }
+            ]
+        },
+        "shouxiaoqing": {
+            "text": "你只用了三招制服了小青，小青愿意变成丫鬟跟随在你身边，你们一起游览西湖。在细雨蒙蒙的西湖断桥上,你看到一位青衫书生（许仙）正为避雨发愁，他正是你要找的人",
+            "image": "10.png",
+            "choices": [
+                {
+                    "text": "一见钟情",
+                    "nextScene": "tongyouxihu",
+                    "effects": { "love": 30}
+                },
+                {
+                    "text": "没看中",
+                    "nextScene": "ending_2",
+                    "effects": { "love": 20}
+                }
+            ]
+        },
+
+        "tongyouxihu": {
+            "text": "许仙自己包了条船游览西湖，小青施法让天空下雨，然后借许仙包的船，让你和他一起游览西湖，快到岸边的时候，雨还没有停，许仙把伞借给你",
+            "image": "11.png",
+            "choices": [
+                {
+                    "text": "欣然接受许仙的伞，并告诉他日后可以去清坡门白府拜访",
+                    "nextScene": "dongfang",
+                    "effects": { "love": 30}
+                },
+                {
+                    "text": "把伞还给许仙，用法力变了一把伞出来",
+                    "nextScene": "ending_4",
+                    "effects": { "love": -20}
+                }
+            ]
+        },
+
+        "dongfang": {
+            "text": "许仙去白府拜访你，顺便提亲，你欣然答应。然后你们就洞房了，许仙说需要100两银子开药铺",
+            "image": "12.png",
+            "choices": [
+                {
+                    "text": "二话不说让小青从官府弄了100两银子给许仙",
+                    "nextScene": "baoantang",
+                    "effects": { "love": 30}
+                },
+                {
+                    "text": "用法力变了100两银子给许仙",
+                    "nextScene": "ending_4",
+                    "effects": { "love": -20}
+                }
+            ]
+        },
+
+        
+        "baoantang": {
+            "text": "保安堂药铺，药香弥漫，你留在药铺帮忙，发现一位老妇人腹痛难忍，许仙却缺一味“千年艾草”",
+            "image": "13.png",
+            "choices": [
+                {
+                    "text": "悄悄用法术催生后院的普通艾草，谎称是“偶然寻得的千年草",
+                    "nextScene": "duanwu",
+                    "effects": { "love": 30}
+                },
+                {
+                    "text": "如实告诉许仙：“我懂些法术，可暂解老妇病痛，你再慢慢寻药",
+                    "nextScene": "duanwu",
+                    "effects": { "love": 40}
+                }
+            ]
+        },
+
+        "duanwu": {
+            "text": "家中，端午佳节.许仙劝你饮雄黄酒，你百般推辞不得，喝下后灵力失控，现出白蛇真身，许仙被吓得气绝倒地",
+            "image": "14.png",
+            "choices": [
+                {
+                    "text": "立刻飞往昆仑山，冒险盗灵芝救他",
+                    "nextScene": "kunlundaocao",
+                    "effects": { "love": 30}
+                },
+                {
+                    "text": "先用法术护住他的魂魄，去求观音大士指点",
+                    "nextScene": "tanbai",
+                    "effects": { "love": 40}
+                }
+            ]
+        },
+
+        "kunlundaocao": {
+            "text": "你与守护灵芝的南极仙翁弟子打斗",
+            "image": "15.png",
+            "choices": [
+                {
+                    "text": "我愿以千年修为换许仙性命，仙翁被感动赠药",
+                    "nextScene": "tanbai",
+                    "effects": { "love": 10}
+                },
+                {
+                    "text": "打伤南极仙翁弟子，强取仙草",
+                    "nextScene": "tanbai",
+                    "effects": { "karma": 10}
+                }
+            ]
+        },
+
+        "tanbai": {
+            "text": "许仙醒来后，你坦白“非人类”身份，他选择：“无论你是谁，我都爱你”",
+            "image": "16.png",
+            "choices": [
+                {
+                    "text": "不信许仙，刻意疏远",
+                    "nextScene": "ending_0",
+                    "effects": { "love": 10}
+                },
+                {
+                    "text": "被许仙的真情感动，更加恩爱",
+                    "nextScene": "jinshan",
+                    "effects": { "love": 100}
+                }
+            ]
+        },
+
+        "jinshan": {
+            "text": "法海得知你是蛇妖，将许仙囚于寺中，逼他出家。你上门哀求，法海冷笑：“人妖殊途，速速离开！”",
+            "image": "17.png",
+            "choices": [
+                {
+                    "text": "忍无可忍，调动水漫金山，逼他放人",
+                    "nextScene": "flood_jinshan",
+                    "effects": { "karma": 10}
+                },
+                {
+                    "text": "暂时退去，找小青帮忙，从后山潜入",
+                    "nextScene": "leifengta",
+                    "effects": { "love": 100}
+                }
+            ]
+        },
+
+        "flood_jinshan": {
+            "text": "大水淹没金山寺，虽救出许仙，却伤及无辜。天庭降罪，你的“天谴值”飙升，法海更以此为由要收了你。",
+            "image": "18.png",
+            "choices": [
+                {
+                    "text": "你打不过法海",
+                    "nextScene": "leifengta",
+                    "effects": { "karma": 10}
+                }
+            ]
+        },
+
+        "leifengta": {
+            "text": "你和小青发动大水淹没金山寺，你被法海以“触犯天条”镇压于雷峰塔，塔门刻着：“若要塔门开，除非西湖水干，雷峰塔倒。",
+            "image": "19.png",
+            "choices": [
+                {
+                    "text": "在塔内潜心修行，每日诵经赎罪，盼有朝一日能再见许仙",
+                    "nextScene": "happyending",
+                    "effects": { "karma": 10}
+                },
+                {
+                    "text": "不甘屈服，凝聚千年修为冲击塔壁，哪怕耗损道行",
+                    "nextScene": "ending_5",
+                    "effects": { "love": 100}
+                }
+            ]
+        },
+
+        "ending_0": {
+            "text": "许仙伤心欲绝，去金山寺当和尚了",
+            "image": "20.png",
+            "isEnding": true
+        },
+        "ending_1": {
+            "text": "后来被山上的鹤当成美食吃了",
+            "image": "5.png",
+            "isEnding": true
+        },
+        "ending_2": {
+            "text": "你给许仙一大笔钱，骗他说是他父母留给他的，然后云游四海去了",
+            "image": "21.png",
+            "isEnding": true
+        },
+        "ending_3": {
+            "text": "你和小青一起修行",
+            "image": "22.png",
+            "isEnding": true
+        },
+        "ending_4": {
+            "text": "许仙被吓到了，觉得你是妖怪，跑得比兔子还快",
+            "image": "23.png",
+            "isEnding": true
+        },
+        "ending_5": {
+            "text": "你冲破塔门却灵力大损，法海追来，许仙挡在你身前：“她从未害过人！” 观音现身：“痴儿，执念已了，随我回山修行吧。” 你回望许仙，随观音而去，留无尽思念。",
+            "image": "24.png",
+            "isEnding": true
+        },
+       
+        "happyending": {
+            "text": "多年后，许仕林考中状元，跪在塔前哭祭，感动天地，塔门自开。你走出塔时，许仙已白发苍苍，两人相视而笑，终得圆满。你虽然水漫金山害了很多人，但是出塔后和许仙一起开芝童堂当医生救了无数人，最后功过相抵，一起云游修行飞升得道成仙，再续情缘生生世世在一起，做了一对羡煞三界的神仙眷侣。小青和兔子精拜师观音得道成仙；法海放下仇恨得道成仙；世林中状元后官到宰相，造福国家；碧莲嫁给宝山，宝山考了武状元官至将军保家卫国；",
+            "image": "25.png",
+            "choices": [
+                {
+                    "text": "穿越到现代",
+                    "nextScene": "xiandai",
+                    "effects": { "love": 60}
+                }
+            ]
+        },
+        "xiandai": {
+            "text": "2025年，杭州街头的“芝童堂”连锁药店人来人往。穿白大褂的赵雅芝正给老人把脉，手法里藏着千年药香；戴眼镜的叶童在柜台配药，算盘打得比计算器还快，两人相视一笑的默契，让排队的粉丝忍不住举手机拍照——#芝童CP从宋朝甜到现世#的话题又冲上热搜。没人知道，这对被全网追捧的“荧幕情侣”，灵魂里住着白素贞与许仙。雷峰塔开后，他们行医百年功过相抵，却被时空乱流卷到现代，成了演自己故事的演员。借着“赵雅芝”“叶童”的身份，他们把保安堂改成芝童堂，用千年秘方配现代药剂，治好的病人能从西湖排到北京。粉丝总说他们“演得太真”，却不知赵雅芝蹙眉时，眼底是水漫金山的愧疚；叶童递药时，指尖带着当年给白素贞熬药的温度。某次直播，有人问起“人妖殊途”，赵雅芝指着窗外的药店招牌笑：“现在哪分这些？能救人的，都是神仙。”叶童接话：“何况我们，早成了人人祝福的神仙眷侣。”傍晚关店，两人撑着复刻版油纸伞走在西湖边。赵雅芝忽然停步：“许郎，你看这霓虹，像不像当年的雷峰塔灯光？”叶童握紧她的手：“不像。当年是囚笼，现在是人间烟火，而我们，终于能在烟火里，牵着手走一辈子了。”伞下，千年的恩怨早被药香冲淡，只剩全网粉丝的祝福，和芝童堂里永远熬着的、温乎乎的人间。",
+            "image": "26.png",
+            "isEnding": true
+        }
+    }
+}
